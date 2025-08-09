@@ -1,0 +1,439 @@
+/* WhatsApp Template Sender Admin Styles */
+
+.wts-admin-container {
+    max-width: 1200px;
+}
+
+/* Form Styles */
+.wts-form-section {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    border-radius: 6px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+}
+
+.wts-form-section h2 {
+    margin-top: 0;
+    color: #1d2327;
+}
+
+/* Template Parameters */
+.template-preview {
+    background: #f6f7f7;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-left: 4px solid #00a32a;
+}
+
+.template-preview h4 {
+    margin: 0 0 10px 0;
+    color: #1d2327;
+    font-size: 14px;
+}
+
+.template-body code {
+    background: #ffffff;
+    padding: 10px;
+    display: block;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.parameter-inputs {
+    margin-top: 20px;
+}
+
+.parameter-inputs h4 {
+    margin: 0 0 15px 0;
+    color: #1d2327;
+    font-size: 14px;
+}
+
+.parameter-input {
+    margin-bottom: 15px;
+}
+
+.parameter-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.parameter-input input {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Status Messages */
+.wts-status-section {
+    margin: 20px 0;
+}
+
+.wts-message-status .notice {
+    margin: 0;
+}
+
+/* Loading State */
+#wts-loading {
+    margin-left: 10px;
+    vertical-align: middle;
+    color: #646970;
+}
+
+#wts-loading .spinner {
+    float: none;
+    margin: 0 5px 0 0;
+}
+
+/* Templates Info Section */
+.wts-templates-info {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.wts-templates-info h3 {
+    margin-top: 0;
+    color: #1d2327;
+}
+
+.wts-templates-list {
+    display: grid;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.wts-template-item {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #c3c4c7;
+    position: relative;
+}
+
+.wts-template-item strong {
+    color: #1d2327;
+    font-size: 15px;
+}
+
+.wts-template-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-approved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.wts-template-body {
+    margin-top: 15px;
+    clear: both;
+}
+
+.wts-template-body code {
+    background: #f8f9fa;
+    padding: 10px 12px;
+    display: block;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid #e1e1e1;
+}
+
+/* Settings Page */
+.wts-settings-container {
+    max-width: 800px;
+}
+
+.wts-connection-status {
+    margin: 20px 0;
+}
+
+.wts-help-section {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 30px;
+}
+
+.wts-help-section h3 {
+    margin-top: 0;
+    color: #1d2327;
+}
+
+.wts-help-section h4 {
+    color: #1d2327;
+    margin-top: 25px;
+}
+
+.wts-help-section ol,
+.wts-help-section ul {
+    margin: 10px 0;
+    padding-left: 30px;
+}
+
+.wts-help-section li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.wts-help-section a {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+.wts-help-section a:hover {
+    text-decoration: underline;
+}
+
+.wts-help-section code {
+    background: #ffffff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 12px;
+    border: 1px solid #ddd;
+}
+
+/* History Page */
+.wts-history-container {
+    max-width: 1200px;
+}
+
+.wts-filters {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.wts-filter-form {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    min-width: 200px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.filter-group input {
+    width: 100%;
+}
+
+/* History Table */
+.wts-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    border: 1px solid #ccd0d4;
+}
+
+.wts-history-table th,
+.wts-history-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.wts-history-table th {
+    background: #f6f7f7;
+    font-weight: 600;
+    color: #1d2327;
+    font-size: 14px;
+}
+
+.wts-history-table tr:hover {
+    background: #f6f7f7;
+}
+
+.wts-history-table tr:last-child td {
+    border-bottom: none;
+}
+
+.wts-status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-sent {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.wts-parameters {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wts-phone {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    color: #2271b1;
+}
+
+.wts-date {
+    white-space: nowrap;
+    font-size: 13px;
+    color: #646970;
+}
+
+/* Pagination */
+.wts-pagination {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+.wts-pagination .page-numbers {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 2px;
+    border: 1px solid #c3c4c7;
+    background: #ffffff;
+    text-decoration: none;
+    border-radius: 3px;
+    color: #2271b1;
+    font-size: 14px;
+}
+
+.wts-pagination .page-numbers:hover {
+    background: #f6f7f7;
+    border-color: #8c8f94;
+}
+
+.wts-pagination .page-numbers.current {
+    background: #2271b1;
+    color: #ffffff;
+    border-color: #2271b1;
+}
+
+/* No Results */
+.wts-no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: #646970;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #ccd0d4;
+}
+
+/* Loading States */
+#wts-history-loading {
+    text-align: center;
+    padding: 40px;
+    color: #646970;
+}
+
+/* Error Message */
+.error-message {
+    display: block;
+    margin-top: 5px;
+    color: #d63384;
+    font-size: 12px;
+}
+
+/* Input Validation */
+input.error {
+    border-color: #d63384;
+    box-shadow: 0 0 0 1px #d63384;
+}
+
+input.valid {
+    border-color: #00a32a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wts-filter-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-group {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .wts-history-table {
+        font-size: 13px;
+    }
+    
+    .wts-history-table th,
+    .wts-history-table td {
+        padding: 8px 10px;
+    }
+    
+    .wts-parameters {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wts-form-section {
+        padding: 15px;
+    }
+    
+    .wts-templates-info {
+        padding: 15px;
+    }
+    
+    .parameter-input input {
+        max-width: none;
+    }
+}
