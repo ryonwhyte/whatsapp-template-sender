@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ryonwhyte/whatsapp-template-sender
  * Description: Send WhatsApp Business API template messages from WordPress admin dashboard and log message history.
  * Version: 1.0.0
- * Author: Your Name
+ * Author: Ryon Whyte
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: whatsapp-template-sender

@@ -4,6 +4,10 @@ CLAUDE.MD
 .claude/
 .claude
 
+# Build files
+dist/
+build/
+
 # WordPress
 wp-config.php
 wp-content/uploads/

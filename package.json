@@ -1,0 +1,22 @@
+{
+  "name": "whatsapp-template-sender",
+  "version": "1.0.0",
+  "description": "WordPress plugin for sending WhatsApp Business template messages",
+  "scripts": {
+    "build": "./build.sh",
+    "zip": "./build.sh"
+  },
+  "author": "Ryon Whyte",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryonwhyte/whatsapp-template-sender.git"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "whatsapp",
+    "business-api",
+    "template-messages"
+  ]
+}
