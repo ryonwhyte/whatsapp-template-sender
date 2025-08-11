@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
 $access_token = get_option('wts_access_token', '');
 $phone_number_id = get_option('wts_phone_number_id', '');
 $business_account_id = get_option('wts_business_account_id', '');
+$allowed_users = get_option('wts_allowed_users', array());
 
 $api_service = new WTS_API_Service();
 $connection_status = null;
@@ -17,6 +18,13 @@ if (!empty($access_token) && !empty($phone_number_id) && !empty($business_accoun
 
 <div class="wrap">
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+    
+    <?php if (!current_user_can('manage_options')): ?>
+        <div class="notice notice-info">
+            <p><strong>Access Granted:</strong> You have been given access to the WhatsApp Template Sender plugin by an administrator. You can send messages and view history, but cannot modify settings.</p>
+        </div>
+        <p><a href="<?php echo admin_url('admin.php?page=whatsapp-templates'); ?>" class="button button-primary">Go to Send Message</a></p>
+    <?php else: ?>
     
     <div class="wts-settings-container">
         <form method="post" action="">
@@ -69,6 +77,35 @@ if (!empty($access_token) && !empty($phone_number_id) && !empty($business_accoun
                                    class="regular-text" />
                             <p class="description">
                                 Your WhatsApp Business Account ID (WABA ID) from Meta Business Manager.
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">
+                            <label for="allowed_users">Allowed Non-Admin Users</label>
+                        </th>
+                        <td>
+                            <?php
+                            $users = get_users(array(
+                                'role__not_in' => array('administrator'),
+                                'fields' => array('ID', 'display_name', 'user_login')
+                            ));
+                            ?>
+                            <?php if (empty($users)): ?>
+                                <p>No non-admin users found.</p>
+                            <?php else: ?>
+                                <select name="allowed_users[]" multiple="multiple" class="wts-user-multiselect" size="8">
+                                    <?php foreach ($users as $user): ?>
+                                        <option value="<?php echo esc_attr($user->ID); ?>" 
+                                                <?php selected(in_array($user->ID, $allowed_users)); ?>>
+                                            <?php echo esc_html($user->display_name . ' (' . $user->user_login . ')'); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            <?php endif; ?>
+                            <p class="description">
+                                Select which non-admin users should have access to the WhatsApp Template Sender plugin. Hold <strong>Ctrl</strong> (Windows) or <strong>Cmd</strong> (Mac) to select multiple users.
                             </p>
                         </td>
                     </tr>
@@ -155,4 +192,26 @@ if (!empty($access_token) && !empty($phone_number_id) && !empty($business_accoun
     border-radius: 3px;
     font-family: monospace;
 }
+
+.wts-user-multiselect {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.wts-user-multiselect option {
+    padding: 4px 8px;
+    border-radius: 2px;
+}
+
+.wts-user-multiselect option:hover {
+    background-color: #f0f0f0;
+}
 </style>
+
+<?php endif; ?>

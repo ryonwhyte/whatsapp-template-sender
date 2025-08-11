@@ -50,6 +50,7 @@ class WhatsAppTemplateSender
         add_option('wts_access_token', '');
         add_option('wts_phone_number_id', '');
         add_option('wts_business_account_id', '');
+        add_option('wts_allowed_users', array());
     }
 
     public function deactivate()
@@ -84,12 +85,30 @@ class WhatsAppTemplateSender
         dbDelta($sql);
     }
 
+    private function user_has_access($user_id = null)
+    {
+        if ($user_id === null) {
+            $user_id = get_current_user_id();
+        }
+        
+        if (user_can($user_id, 'manage_options')) {
+            return true;
+        }
+        
+        $allowed_users = get_option('wts_allowed_users', array());
+        return in_array($user_id, $allowed_users);
+    }
+
     public function add_admin_menu()
     {
+        if (!$this->user_has_access()) {
+            return;
+        }
+
         add_menu_page(
             'WhatsApp Templates',
             'WhatsApp Templates',
-            'manage_options',
+            'read',
             'whatsapp-templates',
             array($this, 'admin_page'),
             'dashicons-format-chat',
@@ -100,7 +119,7 @@ class WhatsAppTemplateSender
             'whatsapp-templates',
             'Send Message',
             'Send Message',
-            'manage_options',
+            'read',
             'whatsapp-templates',
             array($this, 'admin_page')
         );
@@ -109,7 +128,7 @@ class WhatsAppTemplateSender
             'whatsapp-templates',
             'Message History',
             'Message History',
-            'manage_options',
+            'read',
             'whatsapp-templates-history',
             array($this, 'history_page')
         );
@@ -118,7 +137,7 @@ class WhatsAppTemplateSender
             'whatsapp-templates',
             'Settings',
             'Settings',
-            'manage_options',
+            'read',
             'whatsapp-templates-settings',
             array($this, 'settings_page')
         );
@@ -152,16 +171,25 @@ class WhatsAppTemplateSender
     }
 
     public function admin_page(){
+        if (!$this->user_has_access()) {
+            wp_die('You do not have sufficient permissions to access this page.');
+        }
         include WTS_PLUGIN_DIR . 'includes/admin-page.php';
     }
 
     public function history_page()
     {
+        if (!$this->user_has_access()) {
+            wp_die('You do not have sufficient permissions to access this page.');
+        }
         include WTS_PLUGIN_DIR . 'includes/history-page.php';
     }
 
     public function settings_page()
     {
+        if (!$this->user_has_access()) {
+            wp_die('You do not have sufficient permissions to access this page.');
+        }
         if (isset($_POST['submit'])) {
             $this->save_settings();
         }
@@ -174,9 +202,16 @@ class WhatsAppTemplateSender
             wp_die('Security check failed');
         }
 
+        if (!current_user_can('manage_options')) {
+            wp_die('Only administrators can modify settings');
+        }
+
         update_option('wts_access_token', sanitize_text_field($_POST['access_token']));
         update_option('wts_phone_number_id', sanitize_text_field($_POST['phone_number_id']));
         update_option('wts_business_account_id', sanitize_text_field($_POST['business_account_id']));
+        
+        $allowed_users = isset($_POST['allowed_users']) ? array_map('intval', $_POST['allowed_users']) : array();
+        update_option('wts_allowed_users', $allowed_users);
         
         add_action('admin_notices', function() {
             echo '<div class="notice notice-success"><p>Settings saved successfully!</p></div>';
@@ -189,7 +224,7 @@ class WhatsAppTemplateSender
             wp_die('Security check failed');
         }
 
-        if (!current_user_can('manage_options')) {
+        if (!$this->user_has_access()) {
             wp_die('Insufficient permissions');
         }
 
@@ -216,7 +251,7 @@ class WhatsAppTemplateSender
             wp_die('Security check failed');
         }
 
-        if (!current_user_can('manage_options')) {
+        if (!$this->user_has_access()) {
             wp_die('Insufficient permissions');
         }
 
