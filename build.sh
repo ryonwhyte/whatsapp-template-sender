@@ -4,7 +4,7 @@
 # This script creates a distribution-ready ZIP file of the plugin
 
 PLUGIN_NAME="whatsapp-template-sender"
-VERSION=$(grep "Version:" whatsapp-template-sender.php | cut -d' ' -f3)
+VERSION=$(grep "Version:" whatsapp-template-sender.php | sed 's/.*Version: //' | sed 's/ .*//')
 BUILD_DIR="build"
 DIST_DIR="dist"
 
